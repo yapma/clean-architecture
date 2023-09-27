@@ -1,0 +1,12 @@
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Domain\Core.Domain\bin\Debug\net6.0\Core.Domain.deps.json
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Domain\Core.Domain\bin\Debug\net6.0\Core.Domain.dll
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Domain\Core.Domain\bin\Debug\net6.0\Core.Domain.pdb
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Domain\Core.Domain\obj\Debug\net6.0\Core.Domain.csproj.AssemblyReference.cache
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Domain\Core.Domain\obj\Debug\net6.0\Core.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Domain\Core.Domain\obj\Debug\net6.0\Core.Domain.AssemblyInfoInputs.cache
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Domain\Core.Domain\obj\Debug\net6.0\Core.Domain.AssemblyInfo.cs
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Domain\Core.Domain\obj\Debug\net6.0\Core.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Domain\Core.Domain\obj\Debug\net6.0\Core.Domain.dll
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Domain\Core.Domain\obj\Debug\net6.0\refint\Core.Domain.dll
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Domain\Core.Domain\obj\Debug\net6.0\Core.Domain.pdb
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Domain\Core.Domain\obj\Debug\net6.0\ref\Core.Domain.dll

@@ -1,0 +1,5 @@
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Infrastructure\Persistence\Infrastructure.Persistence\obj\Debug\net6.0\Infrastructure.Persistence.csproj.AssemblyReference.cache
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Infrastructure\Persistence\Infrastructure.Persistence\obj\Debug\net6.0\Infrastructure.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Infrastructure\Persistence\Infrastructure.Persistence\obj\Debug\net6.0\Infrastructure.Persistence.AssemblyInfoInputs.cache
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Infrastructure\Persistence\Infrastructure.Persistence\obj\Debug\net6.0\Infrastructure.Persistence.AssemblyInfo.cs
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Infrastructure\Persistence\Infrastructure.Persistence\obj\Debug\net6.0\Infrastructure.Persistence.csproj.CoreCompileInputs.cache
