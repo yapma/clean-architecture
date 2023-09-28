@@ -1,5 +1,7 @@
-﻿using Core.Domain.Entities;
+﻿using Core.Domain.Contracts.Repositories;
+using Core.Domain.Entities;
 using Infrastructure.Persistence.Contexts;
+using Infrastructure.Persistence.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -32,6 +34,9 @@ namespace Infrastructure.Persistence.Extentions
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddRoles<IdentityRole>();
             //.AddDefaultTokenProviders();
+
+            // add services
+            services.AddScoped<IBooksRepository, BooksRepository>();
         }
     }
 }

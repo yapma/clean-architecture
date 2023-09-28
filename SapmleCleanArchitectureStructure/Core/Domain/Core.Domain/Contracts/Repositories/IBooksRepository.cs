@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Domain.Contracts
+namespace Core.Domain.Contracts.Repositories
 {
     public interface IBooksRepository
     {
