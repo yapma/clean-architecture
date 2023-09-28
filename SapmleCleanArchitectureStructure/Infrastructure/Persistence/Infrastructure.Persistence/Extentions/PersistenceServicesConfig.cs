@@ -22,6 +22,7 @@ namespace Infrastructure.Persistence.Extentions
                 config.UseSqlServer(configuration.GetConnectionString("MainConnection"));
             });
 
+            // config identity
             services.AddIdentityCore<User>(config =>
             {
                 config.Password.RequireNonAlphanumeric = false;
