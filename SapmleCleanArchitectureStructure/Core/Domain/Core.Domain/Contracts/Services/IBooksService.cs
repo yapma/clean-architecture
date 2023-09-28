@@ -1,4 +1,4 @@
-﻿using Core.Domain.Entities;
+﻿using Core.Domain.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,6 @@ namespace Core.Domain.Contracts.Services
 {
     public interface IBooksService
     {
-        Task<List<Book>> GetBooks(int id = 0, string title = "");
+        Task<List<GeneralBookResponseDto>> GetGeneralBooks(int id = 0, string title = "");
     }
 }

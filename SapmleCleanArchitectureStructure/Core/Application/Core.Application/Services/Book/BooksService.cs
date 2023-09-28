@@ -1,5 +1,7 @@
 ﻿using Core.Domain.Contracts.Repositories;
 using Core.Domain.Contracts.Services;
+using Core.Domain.Dtos;
+using Mapster;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +18,12 @@ namespace Core.Application.Services.Book
         {
             _booksRepository = booksRepository;
         }
-        public async Task<List<Domain.Entities.Book>> GetBooks(int id = 0, string title = "")
+        public async Task<List<GeneralBookResponseDto>> GetGeneralBooks(int id = 0, string title = "")
         {
-            return await _booksRepository.Get(id, title);
+            var books = await _booksRepository.Get(id, title);
+            return books.Where(x => x.UseageType == Domain.Entities.Book.Type.General)
+                .Select(x => x.Adapt<GeneralBookResponseDto>())
+                .ToList();
         }
     }
 }
