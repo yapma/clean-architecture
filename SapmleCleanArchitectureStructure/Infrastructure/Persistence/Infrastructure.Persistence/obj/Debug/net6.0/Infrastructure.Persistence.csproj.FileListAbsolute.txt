@@ -13,3 +13,5 @@ D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\I
 D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Infrastructure\Persistence\Infrastructure.Persistence\obj\Debug\net6.0\refint\Infrastructure.Persistence.dll
 D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Infrastructure\Persistence\Infrastructure.Persistence\obj\Debug\net6.0\Infrastructure.Persistence.pdb
 D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Infrastructure\Persistence\Infrastructure.Persistence\obj\Debug\net6.0\ref\Infrastructure.Persistence.dll
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Infrastructure\Persistence\Infrastructure.Persistence\bin\Debug\net6.0\Infrastructure.Persistence.runtimeconfig.json
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Infrastructure\Persistence\Infrastructure.Persistence\obj\Debug\net6.0\Infrastructure.Persistence.genruntimeconfig.cache

@@ -11,7 +11,7 @@ namespace Core.Application.Extentions
 {
     public static class ApplicationServicesConfig
     {
-        public static void AddServices(this IServiceCollection services)
+        public static void AddApplicationServices(this IServiceCollection services)
         {
             // add services
             services.AddScoped<IBooksService, BooksService>();

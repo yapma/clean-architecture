@@ -10,3 +10,6 @@ D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\C
 D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Application\Core.Application\obj\Debug\net6.0\refint\Core.Application.dll
 D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Application\Core.Application\obj\Debug\net6.0\Core.Application.pdb
 D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Application\Core.Application\obj\Debug\net6.0\ref\Core.Application.dll
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Application\Core.Application\bin\Debug\net6.0\Core.Domain.dll
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Application\Core.Application\bin\Debug\net6.0\Core.Domain.pdb
+D:\Projects\ImportantTools\clean-architecture\SapmleCleanArchitectureStructure\Core\Application\Core.Application\obj\Debug\net6.0\Core.Application.csproj.CopyComplete

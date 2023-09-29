@@ -16,7 +16,7 @@ namespace Infrastructure.Persistence.Extentions
 {
     public static class PersistenceServicesConfig
     {
-        public static void AddServices(this IServiceCollection services, IConfiguration configuration)
+        public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             // config of ef-core
             services.AddDbContext<ApplicationDbContext>(config =>
@@ -25,15 +25,14 @@ namespace Infrastructure.Persistence.Extentions
             });
 
             // config identity
-            services.AddIdentityCore<User>(config =>
+            services.AddIdentity<User, IdentityRole>(config =>
             {
                 config.Password.RequireNonAlphanumeric = false;
                 config.Password.RequireLowercase = true;
                 config.Password.RequireUppercase = true;
             })
             .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddRoles<IdentityRole>();
-            //.AddDefaultTokenProviders();
+            .AddDefaultTokenProviders();
 
             // add services
             services.AddScoped<IBooksRepository, BooksRepository>();
