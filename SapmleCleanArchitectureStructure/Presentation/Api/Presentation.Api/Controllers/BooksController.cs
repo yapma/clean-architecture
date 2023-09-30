@@ -1,4 +1,5 @@
 ﻿using Core.Domain.Contracts.Services;
+using Core.Domain.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +17,11 @@ namespace Presentation.Api.Controllers
         }
 
         [HttpGet("GetGeneralBooks")]
+        [ProducesResponseType(typeof(List<GeneralBookResponseDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetGeneralBooks()
         {
             var generalBooks = await _booksService.GetGeneralBooks();
-            return Ok("hello yapma");
+            return Ok(generalBooks);
         }
     }
 }
