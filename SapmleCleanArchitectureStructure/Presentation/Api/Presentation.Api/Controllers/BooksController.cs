@@ -1,4 +1,6 @@
-﻿using Core.Domain.Contracts.Services;
+﻿using Ardalis.Result;
+using Ardalis.Result.AspNetCore;
+using Core.Domain.Contracts.Services;
 using Core.Domain.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,11 +19,14 @@ namespace Presentation.Api.Controllers
         }
 
         [HttpGet("GetGeneralBooks")]
-        [ProducesResponseType(typeof(List<GeneralBookResponseDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetGeneralBooks(int id = 0, string title = "")
+        [TranslateResultToActionResult]
+        [ExpectedFailures(ResultStatus.NotFound, ResultStatus.Invalid, ResultStatus.Error)]
+
+        //[ProducesResponseType(typeof(List<GeneralBookResponseDto>), StatusCodes.Status200OK)]
+        public async Task<Result<List<GeneralBookResponseDto>>> GetGeneralBooks(int id = 0, string title = "")
         {
             var generalBooks = await _booksService.GetGeneralBooks(id, title);
-            return Ok(generalBooks);
+            return generalBooks;
         }
     }
 }
