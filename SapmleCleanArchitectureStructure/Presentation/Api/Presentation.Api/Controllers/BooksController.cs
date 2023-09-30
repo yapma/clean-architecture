@@ -18,9 +18,9 @@ namespace Presentation.Api.Controllers
 
         [HttpGet("GetGeneralBooks")]
         [ProducesResponseType(typeof(List<GeneralBookResponseDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetGeneralBooks()
+        public async Task<IActionResult> GetGeneralBooks(int id = 0, string title = "")
         {
-            var generalBooks = await _booksService.GetGeneralBooks();
+            var generalBooks = await _booksService.GetGeneralBooks(id, title);
             return Ok(generalBooks);
         }
     }
