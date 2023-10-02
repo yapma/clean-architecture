@@ -1,7 +1,7 @@
 ﻿using Ardalis.Result;
 using Core.Domain.Contracts.Repositories;
 using Core.Domain.Contracts.Services;
-using Core.Domain.Dtos;
+using Core.Domain.Dtos.Books;
 using Mapster;
 using System;
 using System.Collections.Generic;
@@ -19,9 +19,9 @@ namespace Core.Application.Services.Book
         {
             _booksRepository = booksRepository;
         }
-        public async Task<Result<List<GeneralBookResponseDto>>> GetGeneralBooks(int id = 0, string title = "")
+        public async Task<Result<List<GeneralBookResponseDto>>> GetGeneralBooks(GeneralBookRequestDto model)
         {
-            var books = await _booksRepository.Get(id, title);
+            var books = await _booksRepository.Get(model);
             if (books == null || books.Count == 0)
                 return Result.NotFound("No books found.");
             var resultDto = books.Where(x => x.UseageType == Domain.Entities.Book.Type.General)

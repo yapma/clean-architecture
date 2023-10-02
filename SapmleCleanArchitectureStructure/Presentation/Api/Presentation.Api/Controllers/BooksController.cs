@@ -1,7 +1,7 @@
 ﻿using Ardalis.Result;
 using Ardalis.Result.AspNetCore;
 using Core.Domain.Contracts.Services;
-using Core.Domain.Dtos;
+using Core.Domain.Dtos.Books;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,9 +23,9 @@ namespace Presentation.Api.Controllers
         [ExpectedFailures(ResultStatus.NotFound, ResultStatus.Invalid, ResultStatus.Error)]
 
         //[ProducesResponseType(typeof(List<GeneralBookResponseDto>), StatusCodes.Status200OK)]
-        public async Task<Result<List<GeneralBookResponseDto>>> GetGeneralBooks(int id = 0, string title = "")
+        public async Task<Result<List<GeneralBookResponseDto>>> GetGeneralBooks([FromQuery] GeneralBookRequestDto model)
         {
-            var generalBooks = await _booksService.GetGeneralBooks(id, title);
+            var generalBooks = await _booksService.GetGeneralBooks(model);
             return generalBooks;
         }
     }

@@ -1,4 +1,5 @@
-﻿using Core.Domain.Entities;
+﻿using Core.Domain.Dtos.Books;
+using Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace Core.Domain.Contracts.Repositories
     public interface IBooksRepository
     {
         Task<Book> GetById(int id);
-        Task<List<Book>> Get(int id = 0, string title = "");
+        Task<List<Book>> Get(GeneralBookRequestDto model);
     }
 }

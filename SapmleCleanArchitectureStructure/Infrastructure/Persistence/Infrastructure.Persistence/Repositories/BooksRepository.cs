@@ -1,4 +1,5 @@
 ﻿using Core.Domain.Contracts.Repositories;
+using Core.Domain.Dtos.Books;
 using Core.Domain.Entities;
 using Infrastructure.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -19,18 +20,18 @@ namespace Infrastructure.Persistence.Repositories
             _context = context;
         }
 
-        public async Task<List<Book>> Get(int id = 0, string title = "")
+        public async Task<List<Book>> Get(GeneralBookRequestDto model)
         {
-            return await _context.Books.Where(x => (x.Id == 0 || x.Id == id)
-                && (string.IsNullOrEmpty(title) || x.Title.Contains(title)))
+            return await _context.Books.Where(x => (x.Id == 0 || x.Id == model.Id)
+                && (string.IsNullOrEmpty(model.Title) || x.Title.Contains(model.Title)))
                 .Select(x => x)
                 .ToListAsync();
         }
 
         public async Task<Book> GetById(int id)
         {
-            var books = await Get(id);
-            if(books != null && books.Count != 0)
+            var books = await Get(new GeneralBookRequestDto() { Id = id });
+            if (books != null && books.Count != 0)
                 return books[0];
             return null;
         }

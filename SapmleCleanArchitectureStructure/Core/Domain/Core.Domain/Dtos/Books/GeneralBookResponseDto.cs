@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Domain.Dtos
+namespace Core.Domain.Dtos.Books
 {
     public class GeneralBookResponseDto
     {
