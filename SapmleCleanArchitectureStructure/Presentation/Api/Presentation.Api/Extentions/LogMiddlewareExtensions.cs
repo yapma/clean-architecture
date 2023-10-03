@@ -8,5 +8,10 @@ namespace Presentation.Api.Extentions
         {
             return builder.UseMiddleware<LogMiddleware>();
         }
+
+        public static IApplicationBuilder UseExceptionHandlerMiddleware(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<ExceptionHandlerMiddleware>();
+        }
     }
 }

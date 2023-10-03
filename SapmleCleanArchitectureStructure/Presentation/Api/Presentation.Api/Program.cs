@@ -35,5 +35,6 @@ if (app.Environment.IsDevelopment())
 }
 app.MapControllers();
 app.UseLogMiddleware();
+app.UseExceptionHandlerMiddleware();
 
 app.Run();

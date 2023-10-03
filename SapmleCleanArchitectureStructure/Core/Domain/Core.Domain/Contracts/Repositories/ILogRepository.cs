@@ -10,5 +10,6 @@ namespace Core.Domain.Contracts.Repositories
     public interface ILogRepository
     {
         Task AddRestApiRequestResponseLog(RestApiRequestResponse logModel);
+        Task AddExceptionLog(ExceptionLog logModel);
     }
 }

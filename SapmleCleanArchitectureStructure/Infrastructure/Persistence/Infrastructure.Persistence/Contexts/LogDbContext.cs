@@ -12,6 +12,7 @@ namespace Infrastructure.Persistence.Contexts
     public class LogDbContext : DbContext
     {
         public DbSet<RestApiRequestResponse> RestApiRequestResponse { get; set; }
+        public DbSet<ExceptionLog> ExceptionsLog { get; set; }
 
         public LogDbContext(DbContextOptions<LogDbContext> options) : base(options)
         {

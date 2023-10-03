@@ -23,5 +23,11 @@ namespace Infrastructure.Persistence.Repositories
             _context.RestApiRequestResponse.Add(logModel);
             await _context.SaveChangesAsync();
         }
+
+        public async Task AddExceptionLog(ExceptionLog logModel)
+        {
+            _context.ExceptionsLog.Add(logModel);
+            await _context.SaveChangesAsync();
+        }
     }
 }

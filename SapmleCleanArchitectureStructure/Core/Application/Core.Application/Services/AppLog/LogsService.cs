@@ -21,5 +21,9 @@ namespace Core.Application.Services.AppLog
         {
             await _logRepository.AddRestApiRequestResponseLog(logModel);
         }
+        public async Task AddExceptionLog(ExceptionLog logModel)
+        {
+            await _logRepository.AddExceptionLog(logModel);
+        }
     }
 }

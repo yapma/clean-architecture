@@ -25,6 +25,7 @@ namespace Presentation.Api.Controllers
         //[ProducesResponseType(typeof(List<GeneralBookResponseDto>), StatusCodes.Status200OK)]
         public async Task<Result<List<GeneralBookResponseDto>>> GetGeneralBooks([FromQuery] GeneralBookRequestDto model)
         {
+            throw new Exception("yapma ex");
             var generalBooks = await _booksService.GetGeneralBooks(model);
             return generalBooks;
         }
