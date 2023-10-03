@@ -26,12 +26,17 @@ namespace Presentation.Api.Middlewares
             var requestBody = await GetRequestBodyAsJson(httpContext);
             var requestQuery = GetQueryStrings(httpContext);
             var logService = httpContext.RequestServices.GetService<ILogsService>();
-
+            var originalBodyStream = httpContext.Response.Body;
+            using var responseBody = new MemoryStream();
+            var response = httpContext.Response;
+            response.Body = responseBody;
+            
             await _next(httpContext);
             stopWatch.Stop();
 
             var responseHeader = GetRequestHeadersAsJson(httpContext);
-            var responseBody = await GetRequestBodyAsJson(httpContext);
+            var responseBodyContent = await ReadResponseBody(response);
+            await responseBody.CopyToAsync(originalBodyStream);
 
             await logService.AddRestApiRequestResponseLog(new Core.Domain.Entities.RestApiRequestResponse()
             {
@@ -40,7 +45,7 @@ namespace Presentation.Api.Middlewares
                 RequestQueryStrings = requestQuery,
                 UrlPath = httpContext.Request.Path,
                 DurationInMiliSecond = stopWatch.ElapsedMilliseconds,
-                ResponseBody = responseBody,
+                ResponseBody = responseBodyContent,
                 ResponseHeader = responseHeader,
                 DateTime = DateTime.Now,
                 HttpStatusCode = httpContext.Response.StatusCode
@@ -96,6 +101,15 @@ namespace Presentation.Api.Middlewares
                 responseBody = await reader.ReadToEndAsync();
             }
             return responseBody;
+        }
+
+        private static async Task<string> ReadResponseBody(HttpResponse response)
+        {
+            response.Body.Seek(0, SeekOrigin.Begin);
+            var bodyAsText = await new StreamReader(response.Body).ReadToEndAsync();
+            response.Body.Seek(0, SeekOrigin.Begin);
+
+            return bodyAsText;
         }
     }
 }
