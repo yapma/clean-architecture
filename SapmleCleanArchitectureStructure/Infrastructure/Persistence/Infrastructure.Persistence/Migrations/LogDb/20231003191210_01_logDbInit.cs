@@ -13,16 +13,18 @@ namespace Infrastructure.Persistence.Migrations.LogDb
                 name: "RestApiRequestResponse",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UrlPath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RequestHeader = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RequestBody = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RequestBody = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RequestQueryStrings = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ResponseHeader = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ResponseBody = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ResponseBody = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HttpStatusCode = table.Column<int>(type: "int", nullable: false),
+                    DurationInMiliSecond = table.Column<long>(type: "bigint", nullable: false),
+                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

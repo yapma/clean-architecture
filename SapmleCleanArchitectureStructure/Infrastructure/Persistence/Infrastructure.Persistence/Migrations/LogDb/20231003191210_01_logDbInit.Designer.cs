@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Persistence.Migrations.LogDb
 {
     [DbContext(typeof(LogDbContext))]
-    [Migration("20231003173154_01_logDbInit")]
+    [Migration("20231003191210_01_logDbInit")]
     partial class _01_logDbInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,28 +26,32 @@ namespace Infrastructure.Persistence.Migrations.LogDb
 
             modelBuilder.Entity("Core.Domain.Entities.RestApiRequestResponse", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("DurationInMiliSecond")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("HttpStatusCode")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("RequestBody")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RequestHeader")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("RequestQueryStrings")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ResponseBody")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ResponseHeader")
@@ -59,7 +63,6 @@ namespace Infrastructure.Persistence.Migrations.LogDb
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
