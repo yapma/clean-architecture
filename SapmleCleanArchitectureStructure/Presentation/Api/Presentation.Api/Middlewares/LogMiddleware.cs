@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace Presentation.Api.Middlewares
 {
-    // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class LogMiddleware
     {
         private readonly RequestDelegate _next;
-        //private readonly ILogsService _logService;
 
         public LogMiddleware(RequestDelegate next)
         {
@@ -34,8 +32,8 @@ namespace Presentation.Api.Middlewares
             await _next(httpContext);
             stopWatch.Stop();
 
-            var responseHeader = GetRequestHeadersAsJson(httpContext);
-            var responseBodyContent = await ReadResponseBody(response);
+            var responseHeader = GetResponseHeadersAsJson(httpContext);
+            var responseBodyContent = await GetResponseBodyAsJson(response);
             await responseBody.CopyToAsync(originalBodyStream);
 
             await logService.AddRestApiRequestResponseLog(new Core.Domain.Entities.RestApiRequestResponse()
@@ -93,17 +91,7 @@ namespace Presentation.Api.Middlewares
             return json;
         }
 
-        public async Task<string> GetResponseBodyAsJson(HttpContext context)
-        {
-            string responseBody = "";
-            using (StreamReader reader = new StreamReader(context.Response.Body, Encoding.UTF8))
-            {
-                responseBody = await reader.ReadToEndAsync();
-            }
-            return responseBody;
-        }
-
-        private static async Task<string> ReadResponseBody(HttpResponse response)
+        private static async Task<string> GetResponseBodyAsJson(HttpResponse response)
         {
             response.Body.Seek(0, SeekOrigin.Begin);
             var bodyAsText = await new StreamReader(response.Body).ReadToEndAsync();
