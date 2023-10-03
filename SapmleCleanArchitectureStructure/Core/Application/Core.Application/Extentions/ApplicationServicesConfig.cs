@@ -1,4 +1,5 @@
-﻿using Core.Application.Services.Book;
+﻿using Core.Application.Services.AppLog;
+using Core.Application.Services.Book;
 using Core.Domain.Contracts.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -14,6 +15,7 @@ namespace Core.Application.Extentions
         public static void AddApplicationServices(this IServiceCollection services)
         {
             // add services
+            services.AddScoped<ILogsService, LogsService>();
             services.AddScoped<IBooksService, BooksService>();
         }
     }

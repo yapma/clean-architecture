@@ -24,6 +24,11 @@ namespace Infrastructure.Persistence.Extentions
                 config.UseSqlServer(configuration.GetConnectionString("MainConnection"));
             });
 
+            services.AddDbContext<LogDbContext>(config =>
+            {
+                config.UseSqlServer(configuration.GetConnectionString("LogConnection"));
+            });
+
             // config identity
             services.AddIdentity<User, IdentityRole>(config =>
             {
@@ -35,6 +40,7 @@ namespace Infrastructure.Persistence.Extentions
             .AddDefaultTokenProviders();
 
             // add services
+            services.AddScoped<ILogRepository, LogsRepository>();
             services.AddScoped<IBooksRepository, BooksRepository>();
         }
     }
