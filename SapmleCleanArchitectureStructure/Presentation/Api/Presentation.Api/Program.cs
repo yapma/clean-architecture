@@ -2,7 +2,7 @@ using Ardalis.Result;
 using Ardalis.Result.AspNetCore;
 using Core.Application.Extentions;
 using Infrastructure.Persistence.Extentions;
-using Microsoft.OpenApi.Models;
+using Presentation.Api.Extentions;
 using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,13 +18,7 @@ builder.Services.AddControllers(options =>
 });
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
-builder.Services.AddSwaggerGen(config =>
-{
-    config.SwaggerDoc("v1", new OpenApiInfo { 
-        Title = "Sample Clean Architecture Structure - Yashar", 
-        Version = "v1",
-    });
-});
+builder.Services.AddPresentationApiServices();
 
 //
 var app = builder.Build();
