@@ -29,5 +29,12 @@ namespace Core.Application.Services.Book
                 .ToList();
             return Result.Success(resultDto);
         }
+
+        public async Task<Result> Register(RegisterBookRequestDto model)
+        {
+            Core.Domain.Entities.Book book = model.Adapt<Core.Domain.Entities.Book>();
+            await _booksRepository.Register(book);
+            return Result.Success();
+        }
     }
 }

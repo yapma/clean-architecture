@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Core.Domain.Common
 {
-    public class BaseEntity<T>
+    public class BaseEntity<T> : AuditableEntity where T : struct
     {
-        public BaseEntity()
-        {
-
-        }
         public T Id { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime ModifyDate { get; set; }
     }
 }

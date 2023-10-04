@@ -12,5 +12,6 @@ namespace Core.Domain.Contracts.Repositories
     {
         Task<Book> GetById(int id);
         Task<List<Book>> Get(GeneralBookRequestDto model);
+        Task Register(Book model);
     }
 }

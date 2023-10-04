@@ -11,5 +11,6 @@ namespace Core.Domain.Contracts.Services
     public interface IBooksService
     {
         Task<Result<List<GeneralBookResponseDto>>> GetGeneralBooks(GeneralBookRequestDto model);
+        Task<Result> Register(RegisterBookRequestDto model);
     }
 }

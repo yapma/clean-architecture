@@ -18,17 +18,5 @@ namespace Infrastructure.Persistence.Contexts
         {
 
         }
-
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            foreach (var item in ChangeTracker.Entries<BaseEntity<dynamic>>())
-            {
-                if (item.State == EntityState.Added)
-                    item.Entity.CreateDate = DateTime.Now;
-                else if (item.State == EntityState.Modified)
-                    item.Entity.ModifyDate = DateTime.Now;
-            }
-            return base.SaveChangesAsync(cancellationToken);
-        }
     }
 }

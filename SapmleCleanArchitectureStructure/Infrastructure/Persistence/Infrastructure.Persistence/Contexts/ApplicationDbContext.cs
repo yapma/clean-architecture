@@ -23,7 +23,7 @@ namespace Infrastructure.Persistence.Contexts
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            foreach (var item in ChangeTracker.Entries<BaseEntity<dynamic>>())
+            foreach (var item in ChangeTracker.Entries<AuditableEntity>())
             {
                 if (item.State == EntityState.Added)
                     item.Entity.CreateDate = DateTime.Now;

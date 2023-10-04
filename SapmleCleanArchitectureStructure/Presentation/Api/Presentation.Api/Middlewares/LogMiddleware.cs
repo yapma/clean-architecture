@@ -48,7 +48,6 @@ namespace Presentation.Api.Middlewares
                 DateTime = DateTime.Now,
                 HttpStatusCode = httpContext.Response.StatusCode
             });
-            ;
         }
 
         public string GetRequestHeadersAsJson(HttpContext context)
@@ -58,14 +57,14 @@ namespace Presentation.Api.Middlewares
             return json;
         }
 
-        public async Task<string> GetRequestBodyAsJson(HttpContext context)
+        public static async Task<string> GetRequestBodyAsJson(HttpContext context)
         {
-            string requestBody = "";
-            using (StreamReader reader = new StreamReader(context.Request.Body, Encoding.UTF8))
-            {
-                requestBody = await reader.ReadToEndAsync();
-            }
-            return requestBody;
+            context.Request.EnableBuffering();
+            var buffer = new byte[Convert.ToInt32(context.Request.ContentLength)];
+            await context.Request.Body.ReadAsync(buffer, 0, buffer.Length);
+            var bodyAsText = Encoding.UTF8.GetString(buffer);
+            context.Request.Body.Seek(0, SeekOrigin.Begin);
+            return bodyAsText;
         }
 
         public string GetQueryStrings(HttpContext context)

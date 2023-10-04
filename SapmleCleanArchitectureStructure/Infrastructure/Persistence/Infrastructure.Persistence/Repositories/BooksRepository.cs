@@ -35,5 +35,11 @@ namespace Infrastructure.Persistence.Repositories
                 return books[0];
             return null;
         }
+
+        public async Task Register(Book model)
+        {
+            _context.Books.Add(model);
+            await _context.SaveChangesAsync();  
+        }
     }
 }

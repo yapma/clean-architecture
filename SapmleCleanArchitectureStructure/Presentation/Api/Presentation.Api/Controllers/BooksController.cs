@@ -20,14 +20,21 @@ namespace Presentation.Api.Controllers
 
         [HttpGet("GetGeneralBooks")]
         [TranslateResultToActionResult]
-        [ExpectedFailures(ResultStatus.NotFound, ResultStatus.Invalid, ResultStatus.Error)]
+        [ExpectedFailures(ResultStatus.NotFound, ResultStatus.Error)]
 
         //[ProducesResponseType(typeof(List<GeneralBookResponseDto>), StatusCodes.Status200OK)]
         public async Task<Result<List<GeneralBookResponseDto>>> GetGeneralBooks([FromQuery] GeneralBookRequestDto model)
         {
-            throw new Exception("yapma ex");
             var generalBooks = await _booksService.GetGeneralBooks(model);
             return generalBooks;
+        }
+
+        [HttpPost("RegisterBook")]
+        [TranslateResultToActionResult]
+        [ExpectedFailures(ResultStatus.Error)]
+        public async Task<Result> RegisterBook([FromBody] RegisterBookRequestDto model)
+        {
+            return await _booksService.Register(model);
         }
     }
 }
