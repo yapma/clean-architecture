@@ -1,5 +1,6 @@
 ﻿using Core.Domain.Common;
 using Core.Domain.Entities;
+using Infrastructure.Persistence.FluentApiConfigurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -19,6 +20,16 @@ namespace Infrastructure.Persistence.Contexts
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            // add single config
+            //builder.ApplyConfiguration<Book>(new BookEntityConfiguration());
+            // or use
+            builder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
+
+            base.OnModelCreating(builder);
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
