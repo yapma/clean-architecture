@@ -8,7 +8,7 @@ namespace Core.Domain.Dtos.Books
 {
     public class GeneralBookRequestDto
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
+        public int? Id { get; set; }
+        public string? Title { get; set; }
     }
 }
