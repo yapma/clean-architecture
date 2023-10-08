@@ -22,4 +22,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Core\Domain\Core.Domain\Core.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Infrastructure\Persistence\Infrastructure.Persistence\Infrastructure.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

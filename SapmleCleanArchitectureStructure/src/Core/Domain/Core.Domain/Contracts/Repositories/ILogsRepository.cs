@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace Core.Domain.Contracts.Repositories
 {
-    public interface ILogRepository
+    public interface ILogsRepository
     {
         Task AddRestApiRequestResponseLog(RestApiRequestResponse logModel);
         Task AddExceptionLog(ExceptionLog logModel);
+        Task<List<RestApiRequestResponse>> GetAllRestApiRequestResponseLog();
+        Task<List<ExceptionLog>> GetAllExceptionLog();
     }
 }

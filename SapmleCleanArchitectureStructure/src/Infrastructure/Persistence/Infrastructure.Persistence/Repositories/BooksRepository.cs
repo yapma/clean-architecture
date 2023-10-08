@@ -22,7 +22,11 @@ namespace Infrastructure.Persistence.Repositories
 
         public async Task<List<Book>> Get(GeneralBookRequestDto model)
         {
-            return await _context.Books.Where(x => (model.Id == null || model.Id == 0 || x.Id == model.Id)
+            if (model == null)
+                return await _context.Books.ToListAsync();
+
+            return await _context.Books.Where(x => 
+                (model.Id == null || model.Id == 0 || x.Id == model.Id)
                 && (string.IsNullOrEmpty(model.Title) || x.Title.Contains(model.Title)))
                 .Select(x => x)
                 .ToListAsync();

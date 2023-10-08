@@ -11,9 +11,9 @@ namespace Core.Application.Services.AppLog
 {
     public class LogsService : ILogsService
     {
-        private readonly ILogRepository _logRepository;
+        private readonly ILogsRepository _logRepository;
 
-        public LogsService(ILogRepository logRepository)
+        public LogsService(ILogsRepository logRepository)
         {
             this._logRepository = logRepository;
         }

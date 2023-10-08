@@ -40,7 +40,7 @@ namespace Infrastructure.Persistence.Extentions
             .AddDefaultTokenProviders();
 
             // add services
-            services.AddScoped<ILogRepository, LogsRepository>();
+            services.AddScoped<ILogsRepository, LogsRepository>();
             services.AddScoped<IBooksRepository, BooksRepository>();
         }
     }

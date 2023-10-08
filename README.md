@@ -7,8 +7,11 @@ If you find this project useful, please give it a star. Thanks! ⭐
 - Download this Repository (and modify as needed)
 
 To get started based on this repository, you need to get a copy locally. You have three options: **fork**, **clone**, or **download**.
+
 1- If you intend to experiment with the project or use it as a foundation for an application, it is recommended to **download** the repository, unblock the zip file, and extract it into a new folder.
+
 2- **Fork** this repository only if your intention is to submit a pull request or if you desire to maintain a personal copy of the repository in your GitHub account.
+
 3- If you are a contributor with commit access, it is advisable to **clone** this repository.
 
 ## Technologies and Important Libraries
@@ -16,6 +19,7 @@ To get started based on this repository, you need to get a copy locally. You hav
 - [EF Core 6]
 - [Mapster]
 - [Result]
+- [xUnit], [Moq]
 ## Overview
 The Core section serves as the focal point of the Clean Architecture design, with all other project dependencies directed towards it. As a result, it relies on minimal external dependencies. The Core is responsible for encapsulating the Domain Model.
 ### Domain
@@ -38,3 +42,5 @@ This project is licensed with the MIT license.
    [EF Core 6]: <https://github.com/dotnet/efcore>
    [Mapster]: <https://github.com/MapsterMapper/Mapster>
    [Result]: <https://github.com/ardalis/Result>
+   [xUnit]: <https://github.com/xunit/xunit>
+   [Moq]: <https://github.com/devlooped/moq>
