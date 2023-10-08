@@ -35,7 +35,7 @@ The Presentation section is responsible for providing various services, such as 
 If you are having problems, please let me know by raising a new issue.
 
 ## License
-This project is licensed with the MIT license.
+This project is licensed with the [MIT license].
 
    [Clean Architecture]: <https://blog.cleancoder.com/uncle-bob/2011/11/22/Clean-Architecture.html>
    [ASP.Net 6]: <https://github.com/dotnet/aspnetcore>
@@ -44,3 +44,4 @@ This project is licensed with the MIT license.
    [Result]: <https://github.com/ardalis/Result>
    [xUnit]: <https://github.com/xunit/xunit>
    [Moq]: <https://github.com/devlooped/moq>
+   [MIT license]: <https://github.com/yapma/clean-architecture/blob/main/LICENSE>
