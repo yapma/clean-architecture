@@ -1,6 +1,8 @@
 ﻿using Core.Domain.Contracts.Repositories;
 using Core.Domain.Dtos.Books;
 using Core.Domain.Entities;
+using Infrastructure.Persistence.Contexts;
+using MockQueryable.Moq;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -10,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace UnitTests.Infrastructure.Persistence.Mocks
 {
-    internal class MockBooksRepository
+    internal static class ApplicationDbContextMock
     {
-        public static Mock<IBooksRepository> GetMock()
+        public static Mock<ApplicationDbContext> Context;
+        static ApplicationDbContextMock()
         {
-            var mock = new Mock<IBooksRepository>();
             var books = new List<Book>()
             {
                 new Book()
@@ -50,27 +52,13 @@ namespace UnitTests.Infrastructure.Persistence.Mocks
                     }
                 }
             };
-
-            mock.Setup(m => m.GetById(It.IsAny<int>()))
-                .ReturnsAsync((int id) => books.Single(x => x.Id == id));
-
-            mock.Setup(m => m.Get(It.IsAny<GeneralBookRequestDto>()))
-                .ReturnsAsync((GeneralBookRequestDto model) =>
-                {
-                    if(model == null)
-                    {
-                        return books;
-                    }
-                    return books.Where(x => (model.Id == null || model.Id == 0 || x.Id == model.Id)
-                        && (string.IsNullOrEmpty(model.Title) || x.Title.Contains(model.Title)))
-                        .Select(x => x)
-                        .ToList();
-                });
-
-            mock.Setup(m => m.Register(It.IsAny<Book>()))
+            var booksDbSetMock = books.BuildMock().BuildMockDbSet();
+            var appDbContextMock = new Mock<ApplicationDbContext>();
+            appDbContextMock.Setup(x => x.Books).Returns(booksDbSetMock.Object);
+            appDbContextMock.Setup(x => x.Books.Add(It.IsAny<Book>()))
                 .Callback((Book model) => { books.Add(model); });
 
-            return mock;
+            Context = appDbContextMock;
         }
     }
 }

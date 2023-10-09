@@ -11,12 +11,22 @@ namespace Infrastructure.Persistence.Contexts
 {
     public class LogDbContext : DbContext
     {
-        public DbSet<RestApiRequestResponse> RestApiRequestResponse { get; set; }
-        public DbSet<ExceptionLog> ExceptionsLog { get; set; }
+        public virtual DbSet<RestApiRequestResponse> RestApiRequestResponse { get; set; }
+        public virtual DbSet<ExceptionLog> ExceptionsLog { get; set; }
 
         public LogDbContext(DbContextOptions<LogDbContext> options) : base(options)
         {
 
+        }
+
+        public LogDbContext()
+        {
+
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            return base.SaveChangesAsync(cancellationToken);
         }
     }
 }

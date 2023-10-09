@@ -1,5 +1,6 @@
 ﻿using Core.Domain.Contracts.Repositories;
 using Core.Domain.Entities;
+using Infrastructure.Persistence.Repositories;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,11 @@ namespace UnitTests.Infrastructure.Persistence
 {
     public class LogsRepositoryUnitTests
     {
-        private readonly Mock<ILogsRepository> _repository;
+        private readonly ILogsRepository _logsRepository;
 
         public LogsRepositoryUnitTests()
         {
-            _repository = MockLogsRepository.GetMock();
+            _logsRepository = new LogsRepository(LogDbContextMock.Context.Object);
         }
 
         [Fact]
@@ -27,8 +28,9 @@ namespace UnitTests.Infrastructure.Persistence
             var model = new RestApiRequestResponse() { DateTime = DateTime.Now, Id = id };
 
             // Act
-            await _repository.Object.AddRestApiRequestResponseLog(model);
-            var result = await _repository.Object.GetAllRestApiRequestResponseLog();
+
+            await _logsRepository.AddRestApiRequestResponseLog(model);
+            var result = await _logsRepository.GetAllRestApiRequestResponseLog();
 
             // Assert
             Assert.NotNull(result.Single(x => x.Id == id));
@@ -42,8 +44,8 @@ namespace UnitTests.Infrastructure.Persistence
             var model = new ExceptionLog() { DateTime = DateTime.Now, Id = id };
 
             // Act
-            await _repository.Object.AddExceptionLog(model);
-            var result = await _repository.Object.GetAllExceptionLog();
+            await _logsRepository.AddExceptionLog(model);
+            var result = await _logsRepository.GetAllExceptionLog();
 
             // Assert
             Assert.NotNull(result.Single(x => x.Id == id));

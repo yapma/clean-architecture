@@ -1,6 +1,8 @@
 ﻿using Core.Domain.Contracts.Repositories;
 using Core.Domain.Dtos.Books;
 using Core.Domain.Entities;
+using Infrastructure.Persistence.Contexts;
+using Infrastructure.Persistence.Repositories;
 using Moq;
 using UnitTests.Infrastructure.Persistence.Mocks;
 
@@ -8,18 +10,18 @@ namespace UnitTests.Infrastructure.Persistence
 {
     public class BooksRepositoryUnitTests
     {
-        private readonly Mock<IBooksRepository> _repository;
+        private readonly IBooksRepository _booksRepository;
 
         public BooksRepositoryUnitTests()
         {
-            _repository = MockBooksRepository.GetMock();
+            _booksRepository = new BooksRepository(ApplicationDbContextMock.Context.Object);
         }
 
         [Fact]
         public async Task Get_NullModel_ReturnsAllOfBooks()
         {
             // Act
-            var result = await _repository.Object.Get(null);
+            var result = await _booksRepository.Get(null);
 
             // Assert
             Assert.NotNull(result);
@@ -32,7 +34,7 @@ namespace UnitTests.Infrastructure.Persistence
             var model = new GeneralBookRequestDto() { Id = 1 };
 
             // Act
-            var result = await _repository.Object.Get(model);
+            var result = await _booksRepository.Get(model);
 
             // Assert
             Assert.NotNull(result);
@@ -45,7 +47,7 @@ namespace UnitTests.Infrastructure.Persistence
             int id = 2;
 
             // Act
-            var result = await _repository.Object.GetById(id);
+            var result = await _booksRepository.GetById(id);
 
             // Assert
             Assert.NotNull(result);
@@ -60,8 +62,8 @@ namespace UnitTests.Infrastructure.Persistence
             var model = new Book() { Id = id, Title = "Test Book" };
 
             // Act
-            await _repository.Object.Register(model);
-            var bookObj = await _repository.Object.GetById(id);
+            await _booksRepository.Register(model);
+            var bookObj = await _booksRepository.GetById(id);
 
             // Assert
             Assert.Equal(id, bookObj.Id);

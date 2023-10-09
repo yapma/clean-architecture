@@ -13,11 +13,16 @@ namespace Infrastructure.Persistence.Contexts
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {
-        public DbSet<Book> Books { get; set; }
-        public DbSet<Writer> Writers { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<Writer> Writers { get; set; }
+        public virtual DbSet<Profile> Profiles { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
+        {
+
+        }
+
+        public ApplicationDbContext()
         {
 
         }
